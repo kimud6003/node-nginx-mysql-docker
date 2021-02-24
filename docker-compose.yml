@@ -1,0 +1,46 @@
+version: '3'
+
+services:
+  nginx:
+    build:
+      context: ./nginx
+    container_name: nginx
+    entrypoint: dockerize -wait tcp://node:3000 -timeout 5m 
+    command: [ 'nginx', '-g', 'daemon off;' ]
+    networks:
+      - node_nginx
+    depends_on:
+      - node
+    ports:
+      - 8081:80
+    restart: "unless-stopped"
+  node:
+    build:
+      context: ./node
+    container_name: node
+    entrypoint: dockerize -wait tcp://mysql:3306 -timeout 5m 
+    command: [ 'node', 'index' ]
+    networks:
+      - node_nginx
+      - node_mysql
+    depends_on:
+      - mysql
+    restart: "unless-stopped"
+  mysql:
+    image: mysql:5.7
+    command: --innodb-use-native-aio=0
+    container_name: mysql
+    restart: always
+    volumes:
+      - ./mysql:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=nodedb
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_USER=root
+    networks:
+      - node_mysql
+networks:
+  node_nginx:
+    driver: bridge
+  node_mysql:
+    driver: bridge
