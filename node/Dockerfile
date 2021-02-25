@@ -10,9 +10,13 @@ RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSI
     && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
 
 COPY . .
-RUN npm install -y -g nodemon
+RUN npm install -y -g sequelize-auto
+RUN npm install -y -g pm2
+ENV PM2_PUBLIC_KEY ghuzel5nkndxo2m
+ENV PM2_SECRET_KEY uzc2e7x174an0ld
+
 RUN npm install
 
 EXPOSE 3000
 
-CMD [ "nodemon","-L", "index.js" ]
+CMD ["pm2-runtime", "index.js","--watch","--no-daemon"]

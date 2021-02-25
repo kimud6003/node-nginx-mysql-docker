@@ -5,7 +5,7 @@ services:
     build:
       context: ./nginx
     container_name: nginx
-    entrypoint: dockerize -wait tcp://node:3000 -timeout 5m 
+    entrypoint: dockerize -wait tcp://node:3000 -timeout 5m
     command: [ 'nginx', '-g', 'daemon off;' ]
     networks:
       - node_nginx
@@ -18,8 +18,8 @@ services:
     build:
       context: ./node
     container_name: node
-    entrypoint: dockerize -wait tcp://mysql:3306 -timeout 5m 
-    command: [ 'nodemon','-L', 'index' ]
+    entrypoint: dockerize -wait tcp://mysql:3306 -timeout 5m
+    command:  ["pm2-runtime", "index.js","--watch","--no-daemon"]
     networks:
       - node_nginx
       - node_mysql

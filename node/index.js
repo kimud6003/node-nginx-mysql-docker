@@ -25,7 +25,7 @@ app.get('/', (_req, res) => {
 
         peopleNames = people.map(person => `<li>${person.name}</li>`).join()
 
-        let body = `<h1>test</h1>`
+        let body = `<h1>asd</h1>`
         body += `<ul>${peopleNames}</ul>`
 
         res.send(body)

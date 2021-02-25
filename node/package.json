@@ -4,12 +4,21 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "pm2 start index.js --watch"
   },
   "author": "PB-CAPSTONE",
   "license": "ISC",
   "dependencies": {
+    "pm2": "^3.2.2",
     "express": "^4.17.1",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "nodemon": "^1.14.12",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.5.0",
+    "sequelize-auto": "^0.7.11"
+  },
+    "devDependencies": {
+    "sequelize-cli": "^6.2.0"
   }
 }
