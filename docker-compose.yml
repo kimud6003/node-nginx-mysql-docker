@@ -19,7 +19,7 @@ services:
       context: ./node
     container_name: node
     entrypoint: dockerize -wait tcp://mysql:3306 -timeout 5m 
-    command: [ 'node', 'index' ]
+    command: [ 'nodemon','-L', 'index' ]
     networks:
       - node_nginx
       - node_mysql

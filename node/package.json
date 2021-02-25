@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Helio Albano de Oliveira",
+  "author": "PB-CAPSTONE",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
