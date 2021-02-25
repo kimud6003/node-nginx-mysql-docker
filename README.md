@@ -4,5 +4,5 @@
 
 > docker-compose up -d 
 
-- http://localhost:8080/
+- http://localhost:80/
 - mysql : ip: localhost , port 3306
