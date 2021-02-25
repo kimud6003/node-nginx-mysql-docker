@@ -1,5 +1,7 @@
 # nginx,nodejs,mysql 도커
 
+<img src="./backimage.jpg"/>
+
 ## docker 
 - docker-compose up -d build를 통해 백그라운드와 빌드를 동시 가능
 - docker-compose에서 command를 통해 시작할때 서버와 mysql nginx가 실행되게 하였다.
